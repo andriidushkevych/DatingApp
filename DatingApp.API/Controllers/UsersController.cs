@@ -32,7 +32,7 @@ namespace DatingApp.API.Controllers
         {
             PagedList<User> users = await _repo.GetUsers(userParams);
             IEnumerable<UserForListDTO> usersToReturn = _mapper.Map<IEnumerable<UserForListDTO>>(users);
-            Response.AddPagination(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
+            Response.AddPagination(users.CurrentPage, users.ItemsPerPage, users.TotalItems, users.TotalPages);
             return Ok(usersToReturn);
         }
 

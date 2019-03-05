@@ -10,13 +10,13 @@ namespace DatingApp.API.Helpers
     {
         public int CurrentPage { get; set; }
         public int TotalPages { get; set; }
-        public int PageSize { get; set; }
-        public int TotalCount { get; set; }
+        public int ItemsPerPage { get; set; }
+        public int TotalItems { get; set; }
 
         public PagedList(List<T> items, int count, int pageNumber, int pageSize)
         {
-            TotalCount = count;
-            PageSize = pageSize;
+            TotalItems = count;
+            ItemsPerPage = pageSize;
             CurrentPage = pageNumber;
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);
             this.AddRange(items);
