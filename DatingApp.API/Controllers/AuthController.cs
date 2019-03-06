@@ -52,7 +52,7 @@ namespace DatingApp.API.Controllers
         public async Task<IActionResult> Login([FromBody]UserForLoginDTO userForLogin)
         {
             User userFromRepo = await _repo.Login(userForLogin.Username.ToLower(), userForLogin.Password);
-
+    
             if (userFromRepo == null)
             {
                 return Unauthorized();
