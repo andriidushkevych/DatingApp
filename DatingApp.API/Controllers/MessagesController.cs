@@ -47,8 +47,8 @@ namespace DatingApp.API.Controllers
                 return Unauthorized();
 
             messageParams.UserId = userId;
-            var messagesFromRepo = await _repo.GetMessagesForUser(messageParams);
-            var messages = _mapper.Map<IEnumerable<MessageForReturnDTO>>(messagesFromRepo);
+            PagedList<Message> messagesFromRepo = await _repo.GetMessagesForUser(messageParams);
+            IEnumerable<MessageForReturnDTO> messages = _mapper.Map<IEnumerable<MessageForReturnDTO>>(messagesFromRepo);
             Response.AddPagination(messagesFromRepo.CurrentPage, messagesFromRepo.ItemsPerPage, messagesFromRepo.TotalItems, messagesFromRepo.TotalPages);
             return Ok(messages);
         }

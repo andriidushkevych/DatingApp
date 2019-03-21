@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -24,7 +24,12 @@ export class AuthService {
   }
 
   login(userToLogin: User) {
-    return this.http.post(this.baseUrl + 'login', userToLogin)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    return this.http.post(this.baseUrl + 'login', userToLogin, httpOptions)
       .pipe(
         map((response: any) => {
           const user = response;
