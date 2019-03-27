@@ -15,7 +15,6 @@ namespace DatingApp.API.Controllers
 {
     [ServiceFilter(typeof(LogUserActivity))]
     [Route("api/[controller]")]
-    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly IDatingRepository _repo;
