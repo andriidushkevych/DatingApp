@@ -30,17 +30,18 @@ namespace DatingApp.API.Controllers
         [HttpGet("usersWithRoles")]
         public async Task<IActionResult> GetUsersWithRoles()
         {
-            var userList = await (from user in _context.Users orderby user.UserName
-                                    select new 
-                                    {
-                                        Id = user.Id,
-                                        UserName = user.UserName,
-                                        Roles = (from userRole in user.UserRoles 
-                                                    join role in _context.Roles
-                                                    on userRole.RoleId
-                                                    equals role.Id
-                                                    select role.Name).ToList()
-                                    }).ToListAsync();
+            var userList = await (from user in _context.Users
+                                  orderby user.UserName
+                                  select new
+                                  {
+                                      Id = user.Id,
+                                      UserName = user.UserName,
+                                      Roles = (from userRole in user.UserRoles
+                                               join role in _context.Roles
+                                               on userRole.RoleId
+                                               equals role.Id
+                                               select role.Name).ToList()
+                                  }).ToListAsync();
             return Ok(userList);
         }
 
