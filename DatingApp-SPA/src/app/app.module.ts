@@ -34,6 +34,7 @@ import { PreventUnsavedChanges } from './guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { ListsResolver } from './resolvers/lists.resolver';
 import { MessagesResolver } from './resolvers/messages.resolver';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 
 
 export function tokenGetter() {
@@ -54,6 +55,7 @@ export function tokenGetter() {
       MemberMessagesComponent,
       MemberEditComponent,
       PhotoEditorComponent,
+      AdminPanelComponent,
       TimeAgoPipe
    ],
    imports: [
