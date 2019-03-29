@@ -35,6 +35,7 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
 import { ListsResolver } from './resolvers/lists.resolver';
 import { MessagesResolver } from './resolvers/messages.resolver';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { HasRoleDirective } from './directives/hasRole.directive';
 
 
 export function tokenGetter() {
@@ -56,7 +57,8 @@ export function tokenGetter() {
       MemberEditComponent,
       PhotoEditorComponent,
       AdminPanelComponent,
-      TimeAgoPipe
+      TimeAgoPipe,
+      HasRoleDirective
    ],
    imports: [
       BrowserModule,
