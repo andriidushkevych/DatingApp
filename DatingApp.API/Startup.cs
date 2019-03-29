@@ -83,6 +83,12 @@ namespace DatingApp.API
             builder.AddRoleManager<RoleManager<Role>>();
             builder.AddSignInManager<SignInManager<User>>();
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+                options.AddPolicy("ModeratePhoto", policy => policy.RequireRole("Admin, Moderator"));
+                options.AddPolicy("VIP", policy => policy.RequireRole("VIP"));
+            });
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                                         .AddJwtBearer(options => {
                                             options.TokenValidationParameters = new TokenValidationParameters
